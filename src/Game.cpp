@@ -91,10 +91,10 @@ void Game::episode2()
     std::cout << CYAN << "\n=== Creating Elf using different constructors ===\n" << RESET;
 
     Elf e1;                                                
-    Elf e2("Elf Strażnik", 75, ElfClassType::Warrior);     
+    Elf e2("Elf guardian", 75, ElfClassType::Warrior);     
     Elf e3(e2);                                            
-    Elf e4 = Elf::createWarrior("Elf Berserker");          
-    Elf e5 = Elf::createMage("Elf Czarodziej");           
+    Elf e4 = Elf::createWarrior("Elf Warrior");          
+    Elf e5 = Elf::createMage("Elf mage");           
     Elf e6(ElfClassType::Archer);                          
 
     e1.showStats();

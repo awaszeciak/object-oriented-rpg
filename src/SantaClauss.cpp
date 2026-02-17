@@ -63,7 +63,7 @@ void SantaClauss::showStats() const {
     std::cout << MAGENTA <<"=== Character ===\n" << RESET;
     std::cout << "Name: " << _santa._name << "\n"; 
     std::cout << "HP: " << _santa._hp << "\n";
-    std::cout << "Base damage: " << _baseDamage << "\n";
+    std::cout << "Base damage: " << _baseDamage << "\n\n";
 }
 
 
