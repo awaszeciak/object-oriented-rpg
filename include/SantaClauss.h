@@ -6,6 +6,7 @@
 class SantaClauss {
 private:
     Character _santa;
+    
     int _baseDamage;
 
 public:

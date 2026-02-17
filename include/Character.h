@@ -10,6 +10,7 @@ class Character{
 
     public:
         friend class SantaClauss;
+        friend class Elf;
         Character();
         Character(Inventory eq, std::string name);
         ~Character();

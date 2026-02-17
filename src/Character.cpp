@@ -1,6 +1,7 @@
 #include "Character.h"
 #include <string>
 #include <iostream>
+#include "Colors.h"
 
 Character::Character():
 _eq(), _name("Knight"), _hp(100) {
@@ -23,7 +24,7 @@ Character::~Character() {
 }
 
 void Character::showStats() const {
-    std::cout << "\n=== Character ===\n";
+    std::cout << MAGENTA << "\n=== Character ===\n" << RESET;
     std::cout << "Name: " << _name << "\n";
     std::cout << "HP: " << _hp << "\n";
 

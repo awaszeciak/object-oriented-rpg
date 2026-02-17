@@ -1,4 +1,5 @@
 #include "Inventory.h"
+#include "Colors.h"
 #include <iostream>
 
 Inventory::Inventory():
@@ -23,7 +24,7 @@ void Inventory::add(const Item& item) {
 }
 
 void Inventory::show() const {
-    std::cout << "\n--- Inventory ---\n";
+    std::cout << MAGENTA << "\n=== Inventory ===\n" << RESET;
     for (size_t i = 0; i < _items.size(); ++i) {
         std::cout << _items[i].getName() << " (DMG: " << _items[i].getDamage() << ", " << "Value: "<< _items[i].getValue() <<")\n";
     }

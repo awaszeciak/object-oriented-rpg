@@ -9,18 +9,22 @@ enum class ElfClassType {
     Archer
 };
 
-
 class Elf {
     private:
+        Character _elf;
+        int _baseDamage;
+        ElfClassType _type;
 
     public:
         Elf();
-        Elf(const std::string& name, int hp, int dmg);
-        Elf(const Elf& const);
-        explicit Elf(int diffucultyLevel);
-        Elf(bool withEquipment, int hp);
+        Elf(const std::string& name, int hp, ElfClassType type);
+        Elf(const Elf& other);
+        Elf(ElfClassType type);
 
         ~Elf();
+
+        static Elf createWarrior(const std::string& name);
+        static Elf createMage(const std::string& name);
 
         void showStats() const;
         Inventory& getInventory();
