@@ -1,7 +1,5 @@
 # build files
-build/
-cmake-build-debug/
-cmake-build-release/
+build/*
 
 # executables
 *.exe
@@ -17,3 +15,5 @@ cmake-build-release/
 
 # system
 .DS_Store
+
+README.md
