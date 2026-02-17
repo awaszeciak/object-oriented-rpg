@@ -2,6 +2,7 @@
 #include "Item.h"
 #include "Colors.h"
 #include "SantaClauss.h"
+#include "ElfArmy.h"
 #include "Elf.h"
 #include <ctime>
 #include <iostream>
@@ -84,9 +85,6 @@ void Game::episode2()
     m3.showStats();
     m4.showStats();
     m5.showStats();
-
-
-
     
     std::cout << CYAN << "\n=== Creating Elf using different constructors ===\n" << RESET;
 
@@ -105,19 +103,19 @@ void Game::episode2()
     e6.showStats();
 
 
-    // std::cout << "\n=== 3. Tworzenie armii Elfów różnymi konstruktorami ===\n";
+    std::cout << CYAN << "\n===  Creating Elf Army using different constructors ===\n" << RESET;
 
-    // ElfArmy ea1;                                            // pusty
-    // ElfArmy ea2(3, ElfClassType::Mage);                     // 3 magów
-    // ElfArmy ea3({"Elfik", "Zefir", "Grom"}, ElfClassType::Warrior); // imienna
-    // ElfArmy ea4(ea2);                                       // kopiujący
-    // ElfArmy ea5; ea5.summonRandom(4);                       // losowa
+    ElfArmy ea1;                                            
+    ElfArmy ea2(3, ElfClassType::Mage);                     
+    ElfArmy ea3({"Elfik", "Zefir", "Grom"}, ElfClassType::Warrior); 
+    ElfArmy ea4(ea2);                                       
+    ElfArmy ea5; ea5.summonRandom(4);               
 
-    // std::cout << "\n[PUSTA ARMIA]"; ea1.show();
-    // std::cout << "\n[ARMIA MAGÓW]"; ea2.show();
-    // std::cout << "\n[IMIENNA ARMIA]"; ea3.show();
-    // std::cout << "\n[KOPIA ARMII MAGÓW]"; ea4.show();
-    // std::cout << "\n[ARMIA LOSOWA]"; ea5.show();
+    ea1.show();
+    ea2.show();
+    ea3.show();
+    ea4.show();
+    ea5.show();
 
 
 
@@ -198,33 +196,24 @@ void Game::episode2()
 
     // battleArmies(battleSanta, battleElves);
 
-    // std::cout << "\n=====================================================\n";
-    // std::cout << "                  KONIEC EPIZODU 2                    \n";
-    // std::cout << "=====================================================\n\n";
 }
 
 
 
 void Game::episode3()
 {
-    std::cout << "\n=== EPIZOD 3 ===\n";
-    std::cout << "Tu będzie kolejne zadanie.\n";
-    std::cout << "Szczególy: 11.12.2025.\n";
+    
 
 }
 
 void Game::episode4()
 {
-    std::cout << "\n=== EPIZOD 4 ===\n";
-    std::cout << "Tu będzie kolejne zadanie.\n";
-    std::cout << "Szczególy: 18.12.2025.\n";
+    
 
 }
 
 void Game::episode5()
 {
-    std::cout << "\n=== EPIZOD 5 ===\n";
-    std::cout << "Tu będzie kolejne zadanie.\n";
-    std::cout << "Szczególy: 15.01.2025.\n";
+    
 
 }
