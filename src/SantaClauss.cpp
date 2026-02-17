@@ -29,7 +29,7 @@ SantaClauss::SantaClauss(const SantaClauss& other) {
     _baseDamage = other._baseDamage;
 
     #ifdef DEBUG
-        std::cout << "[DEBUG][SantaClauss] Kopiujący\n";
+        std::cout << "[DEBUG][SantaClauss] Copy constructor\n";
     #endif
 
 }
@@ -39,7 +39,11 @@ SantaClauss(
     difficultyLevel == 1 ? "Santa (Level 1)" : "Santa (Level 2)",
     difficultyLevel == 1 ? 100 : 120,
     difficultyLevel == 1 ? 10 : 20)
-{}
+{
+    #ifdef DEBUG
+        std::cout <<"[DEBUG][SantaClauss] Delegating constructor\n";
+    #endif
+}
 
 SantaClauss::SantaClauss(bool withEquipment, int hp) {
     _santa._name = "Santa Clauss with equipment";
@@ -49,6 +53,10 @@ SantaClauss::SantaClauss(bool withEquipment, int hp) {
     if (withEquipment) {
         _santa._eq.add(Item("Candy cane", 10, 5));
     }
+
+    #ifdef DEBUG
+        std::cout << "[DEBUG][SantaClauss] Equipping constructor\n";
+    #endif
 }
 
 void SantaClauss::showStats() const {

@@ -5,7 +5,7 @@
 
 Elf::Elf() {
     #ifdef DEBUG    
-        std::cout << "[DEBUG][Elf] Constructor";
+        std::cout << "[DEBUG][Elf] Default constructor\n";
     #endif
 }
 
@@ -13,6 +13,9 @@ Elf::Elf(const std::string& name, int hp, ElfClassType type) {
     _elf._name = name;
     _elf._hp = hp;
     _type = type;
+    #ifdef DEBUG
+        std::cout << "[DEBUG][Elf] Parameterized constructor\n";
+    #endif
 }
 
 Elf::Elf(const Elf& other) {
@@ -21,6 +24,10 @@ Elf::Elf(const Elf& other) {
     _elf._hp = other._elf._hp;
     _baseDamage = other._baseDamage;
     _type = other._type;
+
+    #ifdef DEBUG
+        std::cout << "[DEBUG][Elf] Copy constructor\n";
+    #endif
 }
 
 Elf Elf::createWarrior(const std::string& name) {
@@ -33,25 +40,20 @@ Elf Elf::createMage(const std::string& name) {
     return mage;
 }
 
-Elf::Elf(ElfClassType type) {
-    switch (type)
-    {
-    case ElfClassType::Archer: {
-            Elf archer("Elf archer", 100, ElfClassType::Archer);
-        break;
-    }
-    case ElfClassType::Mage: {
-            Elf mage("Elf mage", 50, ElfClassType::Mage);
-        break;
-    }
-    case ElfClassType::Warrior: {
-            Elf warrior("Elf warrior", 80, ElfClassType::Warrior); 
-    }
+Elf::Elf(ElfClassType type)
+    : Elf(
+        type == ElfClassType::Archer ? "Elf Archer" :
+        type == ElfClassType::Mage   ? "Elf Mage"   :
+                                       "Elf Warrior",
 
-    default:
-        break;
-    }
+        type == ElfClassType::Archer ? 100 :
+        type == ElfClassType::Mage   ? 50  : 80, type)
+{
+    #ifdef DEBUG
+        std::cout << "[DEBUG][Elf] Delegating constructor\n";
+    #endif
 }
+
 
 void Elf::showStats() const {
 

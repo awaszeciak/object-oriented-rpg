@@ -73,11 +73,11 @@ void Game::episode2()
 
     std::cout << CYAN << "\n=== Creating Santa using different constructors ===\n" << RESET;
 
-    SantaClauss m1;                                     // domyślny
-    SantaClauss m2("Santa CLauss Warrior", 150, 25);        // parametryczny
-    SantaClauss m3(m2);                                  // kopiujący
-    SantaClauss m4(2);                                   // delegujący (difficulty level)
-    SantaClauss m5(true, 130);                           // wyposażający
+    SantaClauss m1;                                  
+    SantaClauss m2("Santa CLauss Warrior", 150, 25);       
+    SantaClauss m3(m2);                                  
+    SantaClauss m4(2);                                   
+    SantaClauss m5(true, 130);                           
 
     m1.showStats();
     m2.showStats();
@@ -90,12 +90,12 @@ void Game::episode2()
     
     std::cout << CYAN << "\n=== Creating Elf using different constructors ===\n" << RESET;
 
-    Elf e1;                                                // domyślny
-    Elf e2("Elf Strażnik", 75, ElfClassType::Warrior);     // parametryczny
-    Elf e3(e2);                                            // kopiujący
-    Elf e4 = Elf::createWarrior("Elf Berserker");          // fabryka wojownik
-    Elf e5 = Elf::createMage("Elf Czarodziej");            // fabryka mag
-    Elf e6(ElfClassType::Archer);                          // losowy łucznik
+    Elf e1;                                                
+    Elf e2("Elf Strażnik", 75, ElfClassType::Warrior);     
+    Elf e3(e2);                                            
+    Elf e4 = Elf::createWarrior("Elf Berserker");          
+    Elf e5 = Elf::createMage("Elf Czarodziej");           
+    Elf e6(ElfClassType::Archer);                          
 
     e1.showStats();
     e2.showStats();
@@ -105,12 +105,6 @@ void Game::episode2()
     e6.showStats();
 
 
-
-    // //
-    // // ============================================================
-    // //  3. TWORZENIE ARMII ELFÓW
-    // // ============================================================
-    // //
     // std::cout << "\n=== 3. Tworzenie armii Elfów różnymi konstruktorami ===\n";
 
     // ElfArmy ea1;                                            // pusty
@@ -127,11 +121,7 @@ void Game::episode2()
 
 
 
-    // //
-    // // ============================================================
-    // //  4. TWORZENIE ARMII MIKOŁAJÓW
-    // // ============================================================
-    // //
+
     // std::cout << "\n=== 4. Tworzenie armii Mikołajów różnymi konstruktorami ===\n";
 
     // SantaArmy sa1;                   // pusta
@@ -148,11 +138,6 @@ void Game::episode2()
 
 
 
-    // //
-    // // ============================================================
-    // //  5. WALKI
-    // // ============================================================
-    // //
     // std::cout << "\n=====================================================\n";
     // std::cout << "                   WALKI TESTOWE                     \n";
     // std::cout << "=====================================================\n";
