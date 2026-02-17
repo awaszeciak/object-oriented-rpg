@@ -1,3 +1,0 @@
-/mnt/c/Users/adria/Desktop/github_projects/rpg_cpp_lab/build/CMakeFiles/SimpleRPG.dir
-/mnt/c/Users/adria/Desktop/github_projects/rpg_cpp_lab/build/CMakeFiles/edit_cache.dir
-/mnt/c/Users/adria/Desktop/github_projects/rpg_cpp_lab/build/CMakeFiles/rebuild_cache.dir
