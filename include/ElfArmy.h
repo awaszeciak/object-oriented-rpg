@@ -3,6 +3,7 @@
 #include "Elf.h"
 #include <vector>
 
+class SantaArmy;
 
 class ElfArmy{
     private:
@@ -11,6 +12,7 @@ class ElfArmy{
 
 
     public:
+        friend void battleArmies(SantaArmy&, ElfArmy&);
         ElfArmy();
         ElfArmy(int count, ElfClassType type);
         ElfArmy(const std::vector<std::string> &names, ElfClassType type);

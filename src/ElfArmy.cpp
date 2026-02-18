@@ -13,7 +13,7 @@ ElfArmy::ElfArmy()
 ElfArmy::ElfArmy(int count, ElfClassType type) :
 _morale(100) {
     for (int i = 0; i < count; i++) {
-        _units.push_back(Elf(type));
+        _units.emplace_back(Elf(type));
     }
     #ifdef DEBUG
         std::cout <<"[DEBUG][ElfArmy] Parameterized constructor\n";

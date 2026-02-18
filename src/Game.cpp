@@ -2,7 +2,9 @@
 #include "Item.h"
 #include "Colors.h"
 #include "SantaClauss.h"
+#include "SantaArmy.h"
 #include "ElfArmy.h"
+#include "battleArmies.h"
 #include "Elf.h"
 #include <ctime>
 #include <iostream>
@@ -61,7 +63,7 @@ void Game::episode1()
     player.getInventory().show();
 }
 
-//
+
 
 void Game::episode2()
 {
@@ -75,7 +77,7 @@ void Game::episode2()
     std::cout << CYAN << "\n=== Creating Santa using different constructors ===\n" << RESET;
 
     SantaClauss m1;                                  
-    SantaClauss m2("Santa CLauss Warrior", 150, 25);       
+    SantaClauss m2("Santa Clauss Warrior", 150, 25);       
     SantaClauss m3(m2);                                  
     SantaClauss m4(2);                                   
     SantaClauss m5(true, 130);                           
@@ -120,81 +122,72 @@ void Game::episode2()
 
 
 
-    // std::cout << "\n=== 4. Tworzenie armii Mikołajów różnymi konstruktorami ===\n";
+    std::cout << CYAN << "\n=== Creating Santa Army using different constructors ===\n" << RESET;
 
-    // SantaArmy sa1;                   // pusta
-    // SantaArmy sa2(3);                // zwykła armia 3
-    // SantaArmy sa3(2, true);          // elitarna armia
-    // SantaArmy sa4(sa3);              // kopiująca
-    // SantaArmy sa5; sa5.summonElite(3); // summon
+    SantaArmy sa1;                   
+    SantaArmy sa2(3);                
+    SantaArmy sa3(2, true);          
+    SantaArmy sa4(sa3);
+    SantaArmy sa5; sa5.summonElite(3); 
 
-    // std::cout << "\n[PUSTA]"; sa1.show();
-    // std::cout << "\n[3 ZWYKŁYCH]"; sa2.show();
-    // std::cout << "\n[ELITARNA]"; sa3.show();
-    // std::cout << "\n[KOPIA ELITARNEJ]"; sa4.show();
-    // std::cout << "\n[SAMMONE ELITARNYCH]"; sa5.show();
-
-
-
-    // std::cout << "\n=====================================================\n";
-    // std::cout << "                   WALKI TESTOWE                     \n";
-    // std::cout << "=====================================================\n";
-
-    // //
-    // // 5a) WALKA 1 vs 1
-    // //
-    // std::cout << "\n--- WALKA 1 vs 1: Mikołaj (delegujący) vs Elf (losowy) ---\n";
-
-    // SantaClauss fighterSanta = m4;   // delegujący konstruktor Mikołaja
-    // Elf fighterElf = e6;             // losowy łucznik
-
-    // std::cout << "\n> PRZED WALKĄ:\n";
-    // fighterSanta.showStats();
-    // fighterElf.showStats();
-
-    // int round = 1;
-    // while (fighterSanta.isAlive() && fighterElf.isAlive())
-    // {
-    //     std::cout << "\n[Runda " << round << "]\n";
-
-    //     int sHit = fighterSanta.getBaseDamage() + std::rand() % 10;
-    //     int eHit = fighterElf.getBaseDamage() + std::rand() % 8;
-
-    //     std::cout << "Mikołaj atakuje za " << sHit << "\n";
-    //     fighterElf.takeDamage(sHit);
-
-    //     if (!fighterElf.isAlive())
-    //         break;
-
-    //     std::cout << "Elf uderza za " << eHit << "\n";
-    //     fighterSanta.takeDamage(eHit);
-
-    //     round++;
-    // }
-
-    // std::cout << "\n> WYNIK WALKI 1v1:\n";
-    // if (fighterSanta.isAlive())
-    //     std::cout << "Mikołaj zwycięża! 🎅\n";
-    // else
-    //     std::cout << "Elf zwycięża! 🧝\n";
+    sa1.show();
+    sa2.show();
+    sa3.show();
+    sa4.show();
+    sa5.show();
 
 
 
-    // //
-    // // 5b) WALKA ARMIA vs ARMIA
-    // //
-    // std::cout << "\n=====================================================\n";
-    // std::cout << "                 WALKA ARMIA vs ARMIA                \n";
-    // std::cout << "=====================================================\n";
+    std::cout << CYAN << "\n=== Test battles ===\n" << RESET;
+    
+    std::cout << MAGENTA << "\n=== 1 vs 1 BATTLE: Santa (delegating constructor) vs Elf (random) ===\n" << RESET;
 
-    // // wybierz armie utworzone różnymi konstruktorami:
-    // SantaArmy battleSanta = sa3;   // elitarna armia (konstruktor parametr+elite)
-    // ElfArmy battleElves = ea3;     // imienna armia (konstruktor listowy)
 
-    // battleSanta.show();
-    // battleElves.show();
+    SantaClauss fighterSanta = m4;  
+    Elf fighterElf = e6;             
 
-    // battleArmies(battleSanta, battleElves);
+    std::cout << YELLOW <<"\n> BEFORE BATTLE:\n" << RESET;
+    fighterSanta.showStats();
+    fighterElf.showStats();
+
+    int round = 1;
+    while (fighterSanta.isAlive() && fighterElf.isAlive())
+    {
+        std::cout << YELLOW <<"\n[Round " << round << "]\n" << RESET;
+
+        int sHit = fighterSanta.getBaseDamage() + std::rand() % 10;
+        int eHit = fighterElf.getBaseDamage() + std::rand() % 8;
+
+        std::cout << "Santa attacks for " << sHit << "\n";
+        fighterElf.takeDamage(sHit);
+
+        if (!fighterElf.isAlive())
+            break;
+
+        std::cout << "Elf hits for " << eHit << "\n";
+        fighterSanta.takeDamage(eHit);
+
+        round++;
+    }
+
+    std::cout << GREEN <<  "\n> 1vs1 BATTLE RESULT\n" << RESET;
+    if (fighterSanta.isAlive())
+        std::cout << "Santa wins!\n";
+    else
+        std::cout << "Elf wins!\n";
+
+
+
+    std::cout << MAGENTA << "\n=== ARMY vs ARMY BATTLE: SantaArmy (Elite) vs ElfArmy (List) ===\n" << RESET;
+
+    SantaArmy battleSanta = sa3; 
+    ElfArmy battleElves = ea3;  
+
+    std::cout << YELLOW <<"\n> BEFORE BATTLE:\n" << RESET;
+    battleSanta.show();
+    battleElves.show();
+
+    battleArmies(battleSanta, battleElves);
 
 }
 
