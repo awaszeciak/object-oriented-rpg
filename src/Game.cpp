@@ -5,9 +5,11 @@
 #include "SantaArmy.h"
 #include "ElfArmy.h"
 #include "battleArmies.h"
+#include "Quest.h"
 #include "Elf.h"
 #include <ctime>
 #include <iostream>
+#include <string>
 
 Game::Game()
 {
@@ -191,11 +193,26 @@ void Game::episode2()
 
 }
 
+void Game::episode3(){
+
+    std::cout << BOLD << GREEN
+    << "\n=== EPISODE 4 ===\n"
+    << RESET;
+
+    Character goldMiner("GoldMinder", 100, 5);
+    Character snowCollector(std::string("SnowCollector"), 90, 3);
+    Character reindeerHunter("ReindeerHunter", 110, 6);
+
+    goldMiner.showStats();
+    snowCollector.showStats();
+    reindeerHunter.showStats();
 
 
-void Game::episode3()
-{
-    
+    Quest q1 = "Mining Gold";
+    Quest q2(std::string("Collect Snow"));
+    Quest q3("Hunt Reindeer");
+
+    // QuestTimer timer1(q1.getDuration());
 
 }
 
