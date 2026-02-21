@@ -10,6 +10,9 @@
 #include "Reward.h"
 #include "questFunctions.h"
 #include "Elf.h"
+#include "../questlib/include/Reward_v2.h"
+#include "../questlib/include/Quest_v2.h"
+#include "../questlib/include/questFunctions_v2.h"
 #include <ctime>
 #include <iostream>
 #include <string>
@@ -199,7 +202,7 @@ void Game::episode2()
 void Game::episode3(){
 
     std::cout << BOLD << GREEN
-    << "\n=== EPISODE 4 ===\n"
+    << "\n=== EPISODE 3 ===\n"
     << RESET;
 
     Character goldMiner("GoldMinder", 100, 5);
@@ -260,8 +263,44 @@ void Game::episode3(){
 
 void Game::episode4()
 {
-    
+    using RPG::Quests::Quest_v2;
+    using RPG::Quests::SubQuest_v2;
+    using RPG::Rewards::Reward_v2;
+    using RPG::Rewards::GoldAmount_v2;
+    using RPG::Rewards::ExpAmount_v2;
 
+    std::cout << BOLD << GREEN << "\n === EPISODE 4 === \n" << RESET;
+
+    Quest_v2 q1 = "Mining Gold";
+    q1.addSubQuest(SubQuest_v2("Find Vein"));  
+    q1.addSubQuest(SubQuest_v2(std::string("Mine Ore"), 4));
+    q1.addSubQuest(SubQuest_v2(std::string("Transport"), 2));
+
+    Reward_v2 r = Reward_v2(ExpAmount_v2(0));
+
+    while (!q1.isCompleted()) {
+        r = RPG::Tasks::miningGold_v2(q1);
+    }
+
+    GoldAmount_v2 goldObj = static_cast<GoldAmount_v2>(r);
+    int gold = static_cast<int>(goldObj);
+    std::cout << MAGENTA << "Reward from MiningGold: gold=" << gold << RESET <<"\n";
+
+    Quest_v2 q2(std::string("Collect Snow"));
+    q2.addSubQuest(SubQuest_v2("Go Outside"));
+    q2.addSubQuest(SubQuest_v2(std::string("Fill Pouch"), 3));
+
+    Reward_v2 r2 = Reward_v2(ExpAmount_v2(0));
+    while (!q2.isCompleted()) {
+        r2 = RPG::Tasks::collectSnow_v2(q2);
+    }
+
+    ExpAmount_v2 expObj = static_cast<ExpAmount_v2>(r2);
+    int exp = static_cast<int>(expObj);
+    Item it = static_cast<Item>(r2);
+
+    std::cout << MAGENTA << "Reward from CollectSnow: exp=" << exp
+              << ", item=" << it.getName() << RESET << "\n";
 }
 
 void Game::episode5()
