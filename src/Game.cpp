@@ -6,6 +6,9 @@
 #include "ElfArmy.h"
 #include "battleArmies.h"
 #include "Quest.h"
+#include "QuestTimer.h"
+#include "Reward.h"
+#include "questFunctions.h"
 #include "Elf.h"
 #include <ctime>
 #include <iostream>
@@ -212,7 +215,46 @@ void Game::episode3(){
     Quest q2(std::string("Collect Snow"));
     Quest q3("Hunt Reindeer");
 
-    // QuestTimer timer1(q1.getDuration());
+    QuestTimer timer1(q1.getDuration());
+    QuestTimer timer2(q2.getDuration());
+    QuestTimer timer3(q3.getDuration());
+
+
+    std::cout << "\n" << GREEN << "=== Starting quests! ===\n" << "\n" << RESET;
+
+
+    while (static_cast<bool>(timer1)) {
+        miningGold(q1);
+        timer1.tick();
+    }
+
+    Reward r1 = miningGold(q1);
+    int gold = static_cast<int>(r1);
+
+    std::cout << YELLOW << "goldMiner has earned: " << gold << "\n" << RESET;
+
+    while (static_cast<bool>(timer2)) {
+        collectSnow(q2);
+        timer2.tick();
+    }
+
+    Reward r2 = collectSnow(q2);
+    Item snowItem = static_cast<Item>(r2);
+
+    std::cout << CYAN << "SnowCollector has earned item:  " << snowItem.getName() << RESET << "\n";
+
+
+    while (static_cast<bool>(timer3)) {
+        huntReindeer(q3);
+        timer3.tick();
+    }
+
+    Reward r3 = huntReindeer(q3);
+    SantaClauss guardian = static_cast<SantaClauss>(r3);
+
+
+    std::cout << GREEN << "ReindeerHunter has earned guardian of the reward\n" << RESET;
+    guardian.showStats();
 
 }
 

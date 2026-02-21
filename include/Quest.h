@@ -15,6 +15,13 @@ class Quest {
 
         int getDuration();
 
+        std::string getName() const;
+
+        explicit operator std::string() const;
+
+        void incrementExecution() const;
+        
+
         
 
 };
