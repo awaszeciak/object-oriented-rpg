@@ -19,6 +19,8 @@ endif()
 
 add_subdirectory(questlib)
 
+add_subdirectory(actionlib)
+
 file(GLOB APP_SRC_FILES
     src/*.cpp
 )
@@ -28,4 +30,6 @@ add_executable(SimpleRPG ${APP_SRC_FILES})
 target_include_directories(SimpleRPG PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 target_link_libraries(SimpleRPG PRIVATE QuestLib_v2)
+
+target_link_libraries(SimpleRPG PRIVATE ActionLib)
 

@@ -4,6 +4,9 @@
 #include "SantaClauss.h"
 #include "SantaArmy.h"
 #include "ElfArmy.h"
+#include "../actionlib/include/Action.h"
+#include "../actionlib/include/ActionQueue.h"
+#include "../actionlib/include/Hero.h"
 #include "battleArmies.h"
 #include "Quest.h"
 #include "QuestTimer.h"
@@ -16,6 +19,8 @@
 #include <ctime>
 #include <iostream>
 #include <string>
+#include <sstream>
+#include <functional>
 
 Game::Game()
 {
@@ -305,6 +310,75 @@ void Game::episode4()
 
 void Game::episode5()
 {
+    using RPG::Actions::Hero;
+    using RPG::Actions::Action;
+    using RPG::Actions::ActionQueue;
+
+    std::cout << BOLD << GREEN << "\n === EPISODE 5 === \n" << RESET;
+
+    
+    Hero explorer("Explorer", 120, 60);
+    Hero guardian("Guardian", 140, 40);
+
+    std::cout << "\n[Start]\n";
+    explorer.show();
+    guardian.show();
+
+    Action strike("Strike", explorer, guardian, 10);
+    Action heal("HealPulse", Action::Heal, explorer, 6); 
+    Action rest("Rest", Action::Rest, explorer, 8);  
+
+    std::cout << MAGENTA << "\n[First actions]\n" << RESET;
+    std::cout << strike << "\n";
+    std::cout << heal << "\n";
+    std::cout << rest << "\n";
+
+
+     ++strike;     
+    rest++;      
+    --heal;       
     
 
+    std::cout << MAGENTA << "\n[After ++/--]\n" << RESET;
+    std::cout << strike << "\n";
+    std::cout << heal << "\n";
+    std::cout << rest << "\n";
+
+    int pwr = static_cast<int>(strike);
+    std::cout << YELLOW << "\nPower of strike (static_cast<int>): " << pwr << "\n" <<RESET;
+
+    std::stringstream ss;
+    ss << "15 Thunder"; 
+    ss >> strike;
+
+    std::cout << MAGENTA << "\n[After >>]\n" << RESET;
+    std::cout << strike << "\n";
+
+    ActionQueue q;
+
+    q.push(strike);
+
+    q.push([refStrike = std::ref(strike)]() {
+        refStrike.get()();
+    });
+
+    q.push([&]() {
+        std::cout << "[Lambda] Status:\n";
+        explorer.show();
+        guardian.show();
+    });
+
+    q.push(heal);
+    q.push(rest);
+
+    std::cout << "\nSize=" << q.size() << "\n";
+    std::cout << "\n[RUN]\n";
+    q(); 
+
+    std::cout << "\n[After]\n";
+    explorer.show();
+    guardian.show();
+
+    std::cout << MAGENTA <<"\n[Original strike after run]\n"<<RESET;
+    std::cout << strike << "\n";
 }
