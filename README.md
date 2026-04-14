@@ -1,6 +1,6 @@
-# 🎮 RPG C++ – Object Oriented Game
+# RPG C++ – Object Oriented Game
 
-## 📌 Project Description
+## Project Description
 
 This project is a console-based RPG game written in C++, designed to demonstrate object-oriented programming concepts and modular code structure.
 
@@ -16,9 +16,9 @@ The project is divided into multiple modules (libraries), improving code organiz
 
 ---
 
-## 🧩 Project Structure
+## Project Structure
 
-### 🔹 Core Game
+### Core Game
 
 Folders:
 
@@ -28,11 +28,11 @@ Library responsible for handling actions:
 - `ActionQueue` – queue of actions (FIFO)
 - `Hero` – special character executing actions
 
-👉 allows managing sequences of actions in the game
+ allows managing sequences of actions in the game
 
 ---
 
-### 🔹 questlib
+### questlib
 
 
 Extended quest system:
@@ -42,11 +42,11 @@ Extended quest system:
 - `QuestTimer_v2`
 - `questFunctions_v2`
 
-👉 provides a more advanced quest mechanism
+provides a more advanced quest mechanism
 
 ---
 
-## 🧠 OOP Concepts Used
+## OOP Concepts Used
 
 The project demonstrates:
 
@@ -64,7 +64,7 @@ The project demonstrates:
 
 ---
 
-## ⚔️ Game Mechanics
+## Game Mechanics
 
 - Characters are grouped into armies
 - Armies can fight each other (`battleArmies`)
@@ -76,15 +76,15 @@ The project demonstrates:
 
 ---
 
-## ▶️ How to Run
+## How to Run
 
-### 🔹 Requirements
+### Requirements
 - C++17+
 - CMake
 
 ---
 
-### 🔹 Build
+### Build
 
 ```bash
 mkdir build
